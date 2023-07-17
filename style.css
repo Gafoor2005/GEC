@@ -124,6 +124,7 @@ main::-webkit-scrollbar-track{
 /* --------------home end-------------- */
 #schedule{
     padding: 1rem;
+    overflow: hidden;
 }
 .container{
     display: flex;
@@ -134,6 +135,7 @@ main::-webkit-scrollbar-track{
     margin: auto;
 }
 .table{
+    position: relative;
     /* background: #ffffff8c; */
     width: 50rem;
     margin: 2rem auto;
@@ -142,16 +144,16 @@ main::-webkit-scrollbar-track{
     gap: 1rem;
 }
 .row{
+    /* transform: translateX(50vw); */
     user-select: none;
     transition: all .3s ease-in-out;
     display: flex;
     background: whitesmoke;
     border-radius: 1rem;
-    padding: 1rem 2rem;
+    /* padding: 1rem 2rem; */
 }
 .row:hover {
     box-shadow: 2px 2px 14px -5px black;
-    cursor: pointer;
 }
 .month{
     text-transform: capitalize;
@@ -165,6 +167,11 @@ main::-webkit-scrollbar-track{
     flex: 1;
     display: flex;
     gap: 0.5rem;
+    padding: 1rem 0;
+    padding-left: 2rem;
+}
+.eveDate:hover{
+    cursor: pointer;
 }
 .eveDate h1{
     font-family: 'Roboto Mono', monospace;
@@ -182,10 +189,86 @@ main::-webkit-scrollbar-track{
     font-size: medium;
     gap: 1rem;
 }
-.eveTitle svg{
+.eveTitle:hover{
+    cursor: pointer;
+}
+.eveTitle svg {
     height: 2rem;
     width: fit-content;
 }
 .next{
-    margin: auto;
+    display: flex;
+}
+.next > svg{
+    margin: auto 2rem;
+}
+.next:hover{
+    cursor: pointer;
+}
+.info{
+    transition: all .5s ease;
+    opacity: 0;
+    width: 100%;
+    max-height: calc(100vh - 10rem);
+    gap: 1rem;
+    /* display: flex; */
+    display: none;
+    position: absolute;
+    /* top through js */
+    /* height through js */
+    overflow-y: auto;
+    transform: translateX(-100vw);
+    background: inherit;
+    border-radius: inherit;
+    padding: 1rem 2rem;
+    flex-direction: column;
+}
+.displayInfo{
+    opacity: 1;
+}
+.slideOut{
+    transform: translateX(100vw);
+}
+.info div:first-child{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: larger;
+    font-weight: 500;
+    width: fit-content;
+}
+.info div:first-child:hover{
+    cursor: pointer;
+}
+.info .box li{
+    margin-left: 1rem;
+}
+.info .box ul{
+    margin-bottom: .5rem;
+}
+.info .box > div{
+    margin-bottom: .5rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.info .box{
+    padding: 0 .5rem;
+}
+.info .box h1:last-child{
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.info .box h1:last-child:hover{
+    color: red;
+}
+.info::-webkit-scrollbar{
+    width: 6px;
+}
+.info::-webkit-scrollbar-thumb{
+    background: #00000094;
+}
+.info::-webkit-scrollbar-track{
+    background-color: #00000033;
+    margin: 1rem;
 }

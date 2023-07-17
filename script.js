@@ -28,7 +28,7 @@ main.addEventListener("scroll",()=>{
             navs.forEach((e)=>{
                 let span = e.querySelector('span');
                 if(s.id === e.href.split('#')[1]  &&  (!(span.classList.contains("navActive")))){
-                    console.log("set active");
+                    // console.log("nav set active");
                     removeActive();
                     span.classList.add('navActive');
                 }
@@ -38,3 +38,40 @@ main.addEventListener("scroll",()=>{
     }
 })
 // -------------------nav animation end-----------------------
+let rows = document.querySelectorAll(".table > .row");
+let table = document.querySelector("#schedule > div > .table");
+let topHeight = 0;
+function slideDates(){
+    rows.forEach((e)=>{
+        e.classList.toggle('slideOut');
+    })
+}
+rows.forEach((r)=>{
+    r.querySelector('.info').style.top = -topHeight + 'px';
+    // r.querySelector('.info').style.maxHeight = table.clientHeight + 'px';
+    topHeight += r.clientHeight + 16
+    r.querySelector('.next').addEventListener('click',()=>{
+        r.querySelector('.info').style.display = 'flex';
+        r.querySelector('.info').classList.add('displayInfo');
+        slideDates();
+    })
+    r.querySelector('.eveDate').addEventListener('click',()=>{
+        r.querySelector('.info').style.display = 'flex';
+        r.querySelector('.info').classList.add('displayInfo');
+        slideDates();
+    })
+    r.querySelector('.eveTitle').addEventListener('click',()=>{
+        r.querySelector('.info').style.display = 'flex';
+        r.querySelector('.info').classList.add('displayInfo');
+        slideDates();
+    })
+    
+    r.querySelector('.info > .back').addEventListener('click',()=>{
+        
+        r.querySelector('.info').classList.remove('displayInfo');
+        setTimeout(() => {
+            r.querySelector('.info').style.display = 'none';
+        }, 500);
+        slideDates();
+    })
+})
