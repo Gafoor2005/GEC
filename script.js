@@ -8,7 +8,6 @@ navs.forEach((e)=>{
         let i = e.href.split('#')[1];
         let span = e.querySelector('span');
         removeActive();
-        console.log("rem");
         main.scrollBy(0,10);
         span.classList.add('navActive');
     })
@@ -54,15 +53,18 @@ rows.forEach((r)=>{
         r.querySelector('.info').style.display = 'flex';
         r.querySelector('.info').classList.add('displayInfo');
         slideDates();
+        document.getElementById('schedule').scrollIntoView();
     })
     r.querySelector('.eveDate').addEventListener('click',()=>{
         r.querySelector('.info').style.display = 'flex';
         r.querySelector('.info').classList.add('displayInfo');
+        document.getElementById('schedule').scrollIntoView();
         slideDates();
     })
     r.querySelector('.eveTitle').addEventListener('click',()=>{
         r.querySelector('.info').style.display = 'flex';
         r.querySelector('.info').classList.add('displayInfo');
+        document.getElementById('schedule').scrollIntoView();
         slideDates();
     })
     
@@ -70,8 +72,80 @@ rows.forEach((r)=>{
         
         r.querySelector('.info').classList.remove('displayInfo');
         setTimeout(() => {
-            r.querySelector('.info').style.display = 'none';
+            if( r.querySelector('.info').style.display != 'none'){
+                r.querySelector('.info').style.display = 'none';
+            }
         }, 500);
         slideDates();
     })
 })
+// --------------------------schedule end--------------------------
+secs.forEach(s=>{
+    let cards = s.querySelectorAll(".card");
+    cards.forEach(c => {
+        c.querySelector('.cardDisplay').addEventListener("click",()=>{
+            // s.scrollIntoView();
+            main.style.overflowY = "hidden"
+            c.querySelector('.cardPage').style.left = '0%'
+            c.querySelector('.cardPage').style.top = main.scrollTop + 'px';
+        })
+        document.querySelector('header').addEventListener('click',()=>{
+            if( c.querySelector('.cardPage').style.left == '0%'){
+                main.style.overflowY = "scroll"
+                c.querySelector('.cardPage').style.left = '-100%'
+
+            }
+        })
+        c.querySelector('.cardPage .back').addEventListener('click',()=>{
+            main.style.overflowY = "scroll"
+            c.querySelector('.cardPage').style.left = '-100%'
+        })
+    });
+})
+
+// --------------------------responsive start--------------------------
+if(window.innerWidth <= 976){
+
+    let nav = document.querySelector('nav')
+    let navsLis = document.querySelectorAll('nav ul li');
+    navs.forEach((n)=>{
+        n.addEventListener('click',()=>{
+            setTimeout(() => {
+                nav.style.opacity = 0;
+                nav.classList.remove('dropNav');
+                setTimeout(() => {
+                    nav.style.display = "none";
+                    document.querySelector('header svg').style.opacity = 1;
+                }, 300);
+            }, 2000);
+        })
+    })
+    document.querySelector('header svg').addEventListener('click',(e)=>{
+        e.target.style.opacity = 0;
+        nav.style.display = 'block';
+        setTimeout(() => {
+            nav.style.opacity = 1;
+            nav.classList.add('dropNav');
+        }, 100);
+    })
+}
+let size;
+function setSize(){
+    if(window.innerWidth > 1140){
+        return 1;
+    }
+    else if (window.innerWidth > 976){
+        return 2;
+    }
+    else if (window.innerWidth > 875){
+        return 3;
+    }
+}
+size = setSize();
+window.onresize = ()=>{
+    let newSize = setSize();
+    if(size != newSize){
+        console.log(newSize);
+        location.reload();
+    }
+}

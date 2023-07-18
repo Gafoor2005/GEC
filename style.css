@@ -1,10 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    /* font-family: 'Roboto Mono', monospace;
+    font-family: 'Ubuntu Mono', monospace; */
 }
 header{
     display: flex;
@@ -32,7 +35,17 @@ nav ul li{
     /* height: 2rem; */
     padding: 0.5rem 0.5rem;
 }
+header svg{
+    display: none;
+    margin: auto 2rem;
+    opacity: 1;
+    transition: all .3s ease;
+}
+header svg:hover{
+    cursor: pointer;
+}
 .title-box{
+    z-index: 10;
     display: flex;
     align-items: center;
 }
@@ -61,9 +74,10 @@ main section{
     min-height: calc(100vh - 4rem);
     min-height: calc(100svh - 4rem);
     background-color: aqua;
-
+    border-bottom: 1px solid black;
 }
 main{
+    position: relative;
     height: calc(100vh - 4rem);
     height: calc(100svh - 4rem);
     overflow-y: scroll;
@@ -126,17 +140,20 @@ main::-webkit-scrollbar-track{
     padding: 1rem;
     overflow: hidden;
 }
-.container{
+#schedule .container{
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
 }
-.container h2{
-    margin: auto;
+#schedule .container h2{
+    margin: 0 auto;
 }
 .table{
-    position: relative;
+    /* position: relative; */
     /* background: #ffffff8c; */
+    height: 100%;
+    justify-content: center;
     width: 50rem;
     margin: 2rem auto;
     display: flex;
@@ -206,7 +223,7 @@ main::-webkit-scrollbar-track{
     cursor: pointer;
 }
 .info{
-    transition: all .5s ease;
+    transition: all .3s ease;
     opacity: 0;
     width: 100%;
     max-height: calc(100vh - 10rem);
@@ -256,11 +273,17 @@ main::-webkit-scrollbar-track{
     padding: 0 .5rem;
 }
 .info .box h1:last-child{
-    cursor: pointer;
     transition: all .3s ease;
+    background: black;
+    color: white;
+    width: fit-content;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 1rem;
 }
 .info .box h1:last-child:hover{
     color: red;
+    cursor: pointer;
 }
 .info::-webkit-scrollbar{
     width: 6px;
@@ -271,4 +294,336 @@ main::-webkit-scrollbar-track{
 .info::-webkit-scrollbar-track{
     background-color: #00000033;
     margin: 1rem;
+}
+/* --------------schedule End-------------- */
+#techeves , #lnc{
+    padding: 1rem;
+    display: flex;
+}
+#techeves > .container, #lnc > .container{
+    padding: 2rem 0;
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-direction: column;
+}
+.cards{
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card{
+    width: 24rem;
+    height: 15.5rem;
+    border-radius: 1rem;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    box-shadow: 2px 2px 14px black;
+}
+.cardDisplay:hover{
+    cursor: pointer;
+}
+.cardDisplay{
+    /* background: linear-gradient(271deg, black,1%, transparent,70%,transparent); */
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    transition: all .5s ease;
+}
+.card > .cardDisplay > .date{
+    margin: 1rem;
+    margin-left: auto;
+    background: white;
+    border-radius: 1rem;
+    display: flex;
+    width: 3.5rem;
+    line-height: 1rem;
+    flex-direction: column;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 9px 0px #0000007a;
+}
+.card > .cardDisplay > .date > h3{
+    font-size: larger;
+    margin: 0.5rem;
+    margin-bottom: 0;
+}
+.card > .cardDisplay > .date > p{
+    font-size: small;
+    margin: 0.5rem;
+    margin-top: 0;
+}
+.card > .cardDisplay > .cardData{
+    /* background: linear-gradient(45deg, white, #fffcfc85); */
+    background-color: white;
+    backdrop-filter: blur(2px);
+    border-top: 2px solid #0000007d;
+    color: black;
+    padding: 1.5rem 2rem;
+    line-height: 1.5rem;
+}
+
+.card > .cardDisplay > .cardData >p{
+    font-size: small;
+}
+.card  .cardPage{
+    position: absolute;
+    /* top: 1254px; */
+    /* top through js */
+    left: -100%;
+    /* left: 0; */
+    background: #ebebeb;
+    height: 100%;
+    padding: 1rem;
+    width: 100%;
+    /* backdrop-filter: blur(6px); */
+    z-index: 2;
+    transition: left .3s ease;
+    overflow-y: auto;
+}
+.back{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: larger;
+    font-weight: 500;
+    width: fit-content;
+}
+.back:hover{
+    cursor: pointer;
+}
+.pageData{
+    column-gap: 4rem;
+    padding: 2rem;
+    display: flex;
+    /* align-items: center; */
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.pageData > div:first-child{
+    max-width: 50%;
+}
+.pageData li{
+    margin-left: 1rem;
+}
+.pageData h4{
+    margin-top: .5rem;
+}
+.rMono{
+    font-family: 'Roboto Mono', monospace;
+}
+.pageData .in{
+    margin-left: 1rem;
+    display: flex;
+    gap: 1rem;
+    width: 16rem;
+    justify-content: space-between;
+}
+.pageData h1:last-child{
+    background: black;
+    color: white;
+    width: fit-content;
+    padding: 1rem;
+    margin-top: 1rem;
+    transition: all .3s ease;
+}
+.pageData h1:last-child:hover{
+    color: red;
+    cursor: pointer;
+}
+/* --------------resposive start-------------- */
+@media (max-width: 1140px) {
+    .desc{
+        padding: 1.5rem 6rem;
+    }
+    @media (max-width: 976px) {
+        header{
+            position: relative;
+        }
+        nav{
+            position: absolute;
+            top: 4rem;
+            z-index: 5;
+            width: 100%;
+            height: calc(100vh - 4rem);
+            background: linear-gradient(45deg, white, #fffcfc85);
+            backdrop-filter: blur(2px);
+        }
+        nav ul{
+            height: inherit;
+            flex-direction: column;
+            font-size: xx-large;
+            font-weight: bolder;
+            justify-content: center;
+        }
+        nav ul li{
+            margin-left: 1rem;
+        }
+        nav{
+            transform: translateY(-154px);
+            opacity: 0;
+            display: none;
+            transition: all .3s ease;
+        }
+        header svg{
+            display: block;
+        }
+        .dropNav{
+            transform: translateY(0px);
+        }
+        @media (max-width: 875px) {
+            .next svg{
+                margin-left: auto;
+            }
+            .table{
+                width: 85%;
+            }
+            .desc{
+                padding: 1.5rem 3rem;
+            }
+            .desc .right > h2{
+                font-size: large;
+            }
+            .desc .right > h4{
+                font-size: smaller;
+            }
+            @media (max-width: 650px) {
+                .desc {
+                    padding: 0.5rem 1rem;
+                }
+                .desc .box{
+                    margin: 1rem 0;
+                }
+                #iste {
+                    height: 5rem;
+                }
+                .row{
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    gap: .5rem;
+                }
+                .eveDate{
+                    padding: 1rem 2rem;
+                    padding-bottom: 0;
+                    border-bottom: 1px solid #92929273;
+                }
+                .eveTitle{
+                    padding: 1rem 2rem;
+                    padding-top: 0.5rem;
+                }
+                .next{
+                    display: none;
+                }
+                .info .box > div{
+                    display: block;
+                }
+                .pageData{
+                    width: fit-content;
+                    display: block;
+                    margin: auto;
+                }
+                .pageData > div:first-child{
+                    max-width: unset;
+                }
+                .desc .right{
+                    text-align: unset;
+                }
+                #techeves , #lnc {
+                    padding: 0;
+                }
+                .card{
+                    width: 22rem;
+                    height: 13.5rem;
+                }
+                .card > .cardDisplay > .cardData{
+                    padding: 1rem 2rem;
+                }
+                section .container > h1{
+                    text-align: center;
+                }
+                @media (max-width: 468px) {
+                    header .title{
+                        font-size: small;
+                        font-weight: 500;
+                    }
+                    #main .box{
+                        flex-direction: column;
+                    }
+                    .table{
+                        width: 95%;
+                    }
+                    header svg{
+                        margin-left: 0;
+                    }
+                    .info{
+                        padding: 1rem 1.5rem;
+                    }
+                    #logo{
+                        height: 3rem;
+                        margin: .5rem 0;
+                        margin-left: 1rem;
+                    }
+                    .pageData{
+                        padding: 1rem;
+                    }
+                    .pageData h1:last-child{
+                        margin: auto;
+                        margin-top: 1rem;
+                    }
+                    @media (max-width: 388px) {
+                        header .title{
+                            font-size: x-small;
+                        }
+                        header svg{
+                            margin-right: 1rem;
+                        }
+                        .eveTitle{
+                            padding: .5rem 1.5rem;
+                        }
+                        .eveTitle svg{
+                            height: 1.5rem;
+                        }
+                        .eveDate{
+                            padding: .5rem 1.5rem;
+                            padding-bottom: 0;
+                        }
+                        .row{
+                            gap: 0;
+                        }
+                        .info{
+                            padding: 1rem
+                        }
+                        #schedule{
+                            padding: 1rem 0;
+                        }
+                        .card{
+                            width: 20rem;
+                            height: 13.5rem;
+                        }
+                        .card > .cardDisplay > .cardData{
+                            padding: 1rem 1.5rem;
+                        }
+                        .card > .cardDisplay > .cardData > h2{
+                            font-size: large;
+                        }
+                        .pageData{
+                            padding: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
