@@ -153,6 +153,18 @@ function setSize(){
     else if (window.innerWidth > 875){
         return 3;
     }
+    else if (window.innerWidth > 650){
+        return 4;
+    }
+    else if (window.innerWidth > 468){
+        return 5;
+    }
+    else if (window.innerWidth > 388){
+        return 6;
+    }
+    else{
+        return 0;
+    }
 }
 size = setSize();
 window.onresize = ()=>{
