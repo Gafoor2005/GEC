@@ -46,7 +46,7 @@ function slideDates(){
     })
 }
 if(window.innerHeight < 950){
-    document.querySelector("#schedule > .container").style.minHeight = (40 * 16)  + 'px' 
+    // document.querySelector("#schedule > .container").style.minHeight =  window.innerHeight -(8 * 16)  + 'px' 
 }
 if(window.innerWidth > 650){
     document.querySelector("#schedule > .container").style.minHeight = (33 * 16)  + 'px' 
@@ -57,6 +57,11 @@ rows.forEach((r)=>{
     r.querySelector('.info').style.maxHeight = document.querySelector("#schedule").clientHeight - (16*5) + 'px';
     // r.querySelector('.info').style.maxHeight = table.clientHeight + 'px';
     topHeight += r.clientHeight + 16
+
+    let schedule = document.getElementById('schedule');
+    schedule.addEventListener("focusout",()=>{
+        console.log("hello");
+    })
     r.querySelector('.next').addEventListener('click',()=>{
         r.querySelector('.info').style.display = 'flex';
         r.querySelector('.info').classList.add('displayInfo');
