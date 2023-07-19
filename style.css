@@ -416,7 +416,7 @@ main::-webkit-scrollbar-track{
     max-width: 50%;
 }
 .pageData li{
-    margin-left: 1rem;
+    margin-left: 1.25rem;
 }
 .pageData h4{
     margin-top: .5rem;
