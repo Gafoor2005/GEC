@@ -71,8 +71,8 @@ main{
 }
 main section{
     scroll-snap-align: start;
-    min-height: calc(100vh - 4rem);
-    min-height: calc(100svh - 4rem);
+    /* min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem); */
     background-color: aqua;
     border-bottom: 1px solid black;
 }
@@ -141,7 +141,7 @@ main::-webkit-scrollbar-track{
     overflow: hidden;
 }
 #schedule .container{
-    min-height: 70vh;
+    min-height: calc(70vh / 100vw);
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -458,6 +458,7 @@ main::-webkit-scrollbar-track{
             z-index: 5;
             width: 100%;
             height: calc(100vh - 4rem);
+            height: calc(100svh - 4rem);
             background: linear-gradient(45deg, white, #fffcfc85);
             backdrop-filter: blur(2px);
         }
@@ -540,9 +541,9 @@ main::-webkit-scrollbar-track{
                 .desc .right{
                     text-align: unset;
                 }
-                #techeves , #lnc {
+                /* #techeves , #lnc {
                     padding: 0;
-                }
+                } */
                 .card{
                     width: 22rem;
                     height: 13.5rem;
@@ -605,12 +606,12 @@ main::-webkit-scrollbar-track{
                         .info{
                             padding: 1rem
                         }
-                        #schedule{
+                        /* #schedule{
                             padding: 1rem 0;
-                        }
+                        } */
                         .card{
-                            width: 20rem;
-                            height: 13.5rem;
+                            width: 19rem;
+                            height: 12.5rem;
                         }
                         .card > .cardDisplay > .cardData{
                             padding: 1rem 1.5rem;
@@ -621,9 +622,18 @@ main::-webkit-scrollbar-track{
                         .pageData{
                             padding: .5rem;
                         }
+                        .info{
+                            transform: translateX(calc(-100vw - 1rem));
+                            width: calc(100% + 2rem);
+                        }
                     }
                 }
             }
         }
     }
+}
+
+/* --------------------Temporary-------------------- */
+#sng{
+    height: 100vh;
 }

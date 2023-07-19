@@ -45,8 +45,16 @@ function slideDates(){
         e.classList.toggle('slideOut');
     })
 }
+if(window.innerHeight < 950){
+    document.querySelector("#schedule > .container").style.minHeight = (40 * 16)  + 'px' 
+}
+if(window.innerWidth > 650){
+    document.querySelector("#schedule > .container").style.minHeight = (33 * 16)  + 'px' 
+
+}
 rows.forEach((r)=>{
-    r.querySelector('.info').style.top = -topHeight + 'px';
+    r.querySelector('.info').style.top = -topHeight-16 + 'px';
+    r.querySelector('.info').style.maxHeight = document.querySelector("#schedule").clientHeight - (16*5) + 'px';
     // r.querySelector('.info').style.maxHeight = table.clientHeight + 'px';
     topHeight += r.clientHeight + 16
     r.querySelector('.next').addEventListener('click',()=>{
@@ -121,7 +129,7 @@ if(window.innerWidth <= 976){
         })
     })
     document.querySelector('header svg').addEventListener('click',(e)=>{
-        e.target.style.opacity = 0;
+        document.querySelector('header svg').style.opacity = 0;
         nav.style.display = 'block';
         setTimeout(() => {
             nav.style.opacity = 1;
