@@ -45,8 +45,9 @@ function slideDates(){
         e.classList.toggle('slideOut');
     })
 }
-if(window.innerHeight < 950){
-    // document.querySelector("#schedule > .container").style.minHeight =  window.innerHeight -(8 * 16)  + 'px' 
+if(window.innerHeight < 950 && window.innerWidth < 650){
+    document.querySelector("#schedule > .container").style.minHeight =  window.innerHeight -(10 * 16)  + 'px' 
+    console.log("aa");
 }
 if(window.innerWidth > 650){
     document.querySelector("#schedule > .container").style.minHeight = (33 * 16)  + 'px' 
